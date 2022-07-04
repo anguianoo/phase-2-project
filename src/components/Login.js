@@ -20,10 +20,9 @@ export default function Login() {
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
 
-  function creds(users) {}
   function handleSubmit(e) {
     e.preventDefault()
-
+    console.log("form submitted")
     fetch("http://localhost:4000/users")
       .then(res => res.json())
       .then(data => setUsers(data))
@@ -33,8 +32,7 @@ export default function Login() {
       if (userData.password !== password) {
         alert("invalid Password")
       } else {
-        console.log("success", navigate)
-        // navigate.push("/postslists")
+        navigate("/postslists")
       }
     }
   }
@@ -57,7 +55,7 @@ export default function Login() {
       <form onSubmit={handleSubmit}>
         <TextField
           id="outlined-basic"
-          label="Outlined"
+          label="Username"
           variant="outlined"
           fullWidth
           onChange={e => setUsername(e.target.value)}
