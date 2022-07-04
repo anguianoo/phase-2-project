@@ -1,5 +1,4 @@
-import { TextField, Button, Grid } from "@mui/material"
-
+import { TextField, Button, Grid, Typography, Alert } from "@mui/material"
 import { Box } from "@mui/system"
 import React, { useState } from "react"
 import { Link, useParams, useNavigate } from "react-router-dom"
@@ -11,9 +10,17 @@ export default function SignUp() {
 
   const navigate = useNavigate()
 
+  function validate() {
+    let isValid = true
+    if (password !== reEnterPassword) {
+      isValid = false
+    }
+    return isValid
+  }
+
   function handleSignUp(e) {
     e.preventDefault()
-    console.log("user signed up")
+    // console.log("user signed up")
 
     const itemData = {
       username,
@@ -23,18 +30,25 @@ export default function SignUp() {
     }
 
     // POST to server
+    try {
+      if (validate()) {
+        fetch("http://localhost:4000/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(itemData)
+        })
+          .then(res => res.json())
+          .then(newUser => console.log(newUser))
 
-    fetch("http://localhost:4000/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(itemData)
-    })
-      .then(res => res.json())
-      .then(newUser => console.log(newUser))
+        navigate("/postslists")
 
-    navigate("/postslists")
+        console.log("submitted")
+      }
+    } catch {
+      console.log("false")
+    }
   }
 
   let params = useParams()
@@ -50,6 +64,7 @@ export default function SignUp() {
           alignItems: "center"
         }}
       >
+        {validate() ? "" : <Alert severity="error">passwords dont match</Alert>}
         <form onSubmit={handleSignUp}>
           <TextField
             id="signUp-username"
@@ -59,6 +74,7 @@ export default function SignUp() {
             onChange={e => setUsername(e.target.value)}
             value={username}
           />
+
           <TextField
             margin="normal"
             id="signUp-password-input"
