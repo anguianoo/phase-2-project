@@ -13,6 +13,7 @@ import {
 
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import Axios from "axios"
 
 export default function Login() {
   const [users, setUsers] = useState([])
@@ -20,12 +21,23 @@ export default function Login() {
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    console.log("form submitted")
-    fetch("http://localhost:4000/users")
-      .then(res => res.json())
-      .then(data => setUsers(data))
+    // console.log("form submitted")
+
+    try {
+      const response = await Axios.get("http://localhost:4000/users")
+      // .then(res => res.json())
+      // .then(data => console.log(data))
+      if (response.data) {
+        setUsers(response.data)
+        console.log(response.data)
+      } else {
+        console.log("Incorrect username / password.")
+      }
+    } catch (e) {
+      console.log(e)
+    }
 
     const userData = users.find(user => user.username === username)
     if (userData) {

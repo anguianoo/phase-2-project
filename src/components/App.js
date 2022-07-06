@@ -30,6 +30,7 @@ function App() {
       <IconButton sx={{ ml: 1 }} onClick={handleDarkMode} color="inherit">
         {mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton> */}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
