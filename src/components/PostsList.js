@@ -7,6 +7,7 @@ import Posts from "./Posts"
 export default function PostsLists() {
   const navigate = useNavigate()
   const [posts, setPosts] = useState()
+
   function handleLogOut(e) {
     e.preventDefault()
     console.log("logged out")

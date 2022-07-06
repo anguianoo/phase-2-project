@@ -1,0 +1,45 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "tito",
+      "username": "doe",
+      "loggedIn": false,
+      "password": "abc",
+      "posts": [
+        {
+          "number": "1",
+          "image": "https://images.unsplash.com/photo-1656716870862-18d8bf1e7717?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+          "altText": "photo by sid",
+          "description": "surfing and turfing LOL, Jk. look at the cool sunset"
+        },
+        {
+          "number": "2",
+          "image": "https://images.unsplash.com/photo-1656867032538-2f2f8c5698a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1229&q=80",
+          "altText": "car",
+          "description": "my car looks sick!"
+        },
+        {
+          "number": "3",
+          "image": "https://images.unsplash.com/photo-1656794302508-d15d70f6dbe2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+          "altText": "cut log",
+          "description": "These log patterns look nice"
+        }
+      ]
+    },
+    {
+      "username": "brad",
+      "loggedIn": false,
+      "password": "abcd",
+      "post": [],
+      "id": 2
+    },
+    {
+      "username": "dude",
+      "loggedIn": false,
+      "password": "abc",
+      "post": [],
+      "id": 3
+    }
+  ]
+}
